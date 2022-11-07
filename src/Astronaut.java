@@ -23,8 +23,8 @@ public class Astronaut {
         name = pName;
         xpos = pXpos;
         ypos = pYpos;
-        dx = 1;
-        dy = 0;
+        dx = -3;
+        dy = 2;
         width = 60;
         height = 60;
         isAlive = true;
@@ -37,6 +37,46 @@ public class Astronaut {
         ypos = ypos + dy;
  
     } // end move
+
+    public void bounce(){
+        xpos = xpos + dx;
+        ypos = ypos + dy;
+
+        if (xpos >= 1000-width ||xpos<=0  ){//right or left wall
+            dx = -dx;}
+
+        if (ypos<=0 || ypos>=700-height){//top or bottom wall
+            dy = -dy;}
+    }
+
+
+    public void wrap (){
+        xpos = xpos + dx;
+        ypos = ypos + dy;
+
+        if (xpos>=1000-width && dx>0) {//right wall
+            xpos = -width;
+        }
+
+        if (xpos <= -width && dx<0){//left wall
+            xpos = 1000;
+        }
+
+        if (ypos <= -height && dy<0){//top wall
+            ypos = 700;
+        }
+
+        if (ypos>=600 && dy>0){//bottom wall
+            ypos = -height;
+        }
+    }
+
+
+
+
+
+
+
 }
 
 
